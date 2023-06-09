@@ -1,4 +1,5 @@
-"use client";
+'use client'
+import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/app";
 
@@ -24,14 +25,14 @@ const SignInWithEmailPassword: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input
+      <input
         required
         name="email"
         placeholder="email"
         type="Your email..."
         onChange={handleChange}
       />
-      <Input
+      <input
         required
         name="password"
         placeholder="password"
@@ -39,11 +40,11 @@ const SignInWithEmailPassword: React.FC = () => {
         onChange={handleChange}
       />
 
-      {fbError && <Text>fbError.message</Text>}
+      {fbError && <text>fbError.message</text>}
 
-      <Button type="submit" isLoading={loading}>
+      <button type="submit" >
         Sign In
-      </Button>
+      </button>
     </form>
   );
 };

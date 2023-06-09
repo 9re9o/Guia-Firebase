@@ -1,13 +1,14 @@
 'use client'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '@/firebase/app'
+import React, { useState } from 'react';
 
 const SignUp: React.FC = () => {
-	const [signUpForm, setSignUpForm] = useState({
+  const [signUpForm, setSignUpForm] = useState({
     email: '',
     password: '',
     confirmPassword: '',
-  })
+  });
 
 const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSignUpForm((prev) => ({
@@ -16,25 +17,27 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     }))
   }
 
-const handleSubmit = () => {}
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+  };
 
 return (
   <form onSubmit={handleSubmit}>
-    <Input
+    <input
       required
       name="email"
       placeholder="email"
       type="email"
       onChange={handleChange}
     />
-    <Input
+    <input
       required
       name="password"
       placeholder="password"
       type="password"
       onChange={handleChange}
     />
-    <Input
+    <input
       required
       name="confirmPassword"
       placeholder="Confirm password"
@@ -42,9 +45,9 @@ return (
       onChange={handleChange}
     />
 
-<Button type="submit" isLoading={loading}>
-  Sign Up
-</Button>
+    <button type="submit">
+      Sign Up
+    </button>
   </form>
 );
 }
