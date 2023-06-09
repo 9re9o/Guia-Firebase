@@ -22,5 +22,36 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 const firestore = getFirestore(app)
 const auth = getAuth(app)
 
+
+onst [error, setError] = useState('')
+const [createUserWithEmailAndPassword, user, loading, fbError] =
+    useCreateUserWithEmailAndPassword(auth)
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+
+  // Reset the error before trying to submit the form
+  if (error) setError('')
+
+  // Check passwords match
+  if (signUpForm.password !== signUpForm.confirmPassword) {
+    setError('Passwords do not match')
+    return
+  }
+
+  // Check password format
+  const passwordRegex =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,256}$/gm
+
+  if (!passwordRegex.test(signUpForm.password)) {
+    setError(
+      'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.'
+    )
+    return
+  }
+
+  createUserWithEmailAndPassword(signUpForm.email, signUpForm.password)
+}
+
 // Expose the instances we'll need
 export { app, firestore, auth }

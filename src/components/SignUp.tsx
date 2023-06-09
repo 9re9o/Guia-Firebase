@@ -19,34 +19,34 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 const handleSubmit = () => {}
 
 return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        required
-        name="email"
-        placeholder="email"
-        type="email"
-        onChange={handleChange}
-      />
-      <Input
-        required
-        name="password"
-        placeholder="password"
-        type="password"
-        onChange={handleChange}
-      />
-      <Input
-        required
-        name="confirmPassword"
-        placeholder="Confirm password"
-        type="password"
-        onChange={handleChange}
-      />
+  <form onSubmit={handleSubmit}>
+    <Input
+      required
+      name="email"
+      placeholder="email"
+      type="email"
+      onChange={handleChange}
+    />
+    <Input
+      required
+      name="password"
+      placeholder="password"
+      type="password"
+      onChange={handleChange}
+    />
+    <Input
+      required
+      name="confirmPassword"
+      placeholder="Confirm password"
+      type="password"
+      onChange={handleChange}
+    />
 
-      <Button type="submit">
-        Sign Up
-      </Button>
-    </form>
-  )
+<Button type="submit" isLoading={loading}>
+  Sign Up
+</Button>
+  </form>
+);
 }
 
 export default SignUp
