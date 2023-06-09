@@ -1,26 +1,26 @@
-'use client'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import { auth } from '@/firebase/app'
+"use client";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/app";
 
 const SignInWithEmailPassword: React.FC = () => {
   const [signInForm, setSignInForm] = useState({
-    email: '',
-    password: '',
-  })
+    email: "",
+    password: "",
+  });
   const [signInWithEmailAndPassword, user, loading, fbError] =
-    useSignInWithEmailAndPassword(auth)
+    useSignInWithEmailAndPassword(auth);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    signInWithEmailAndPassword(signInForm.email, signInForm.password)
-  }
+    signInWithEmailAndPassword(signInForm.email, signInForm.password);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSignInForm((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
-    }))
-  }
+    }));
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,4 +45,5 @@ const SignInWithEmailPassword: React.FC = () => {
         Sign In
       </Button>
     </form>
-  )
+  );
+};
