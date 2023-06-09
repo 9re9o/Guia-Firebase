@@ -1,3 +1,4 @@
+'use client'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '@/firebase/app'
 
