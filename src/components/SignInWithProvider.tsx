@@ -1,17 +1,18 @@
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
-import { auth } from '@/firebase/app'
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase/app';
+import React from 'react';
 
 const SignInWithProvider: React.FC = () => {
   const [signInWithGoogle, user, loading, fbError] = useSignInWithGoogle(auth)
   
   return (
-    <Flex>
-      <Button isLoading={loading} onClick={() => signInWithGoogle()}>
+    <div>
+      <button disabled={loading} onClick={() => signInWithGoogle()}>
         Continue with Google
-      </Button>
+      </button>
 
-      {fbError && <Text>{fbError.message}</Text>}
-    </Flex>
+      {fbError && <text>{fbError.message}</text>}
+    </div>
   )
 }
 

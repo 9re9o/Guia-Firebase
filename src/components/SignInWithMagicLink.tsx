@@ -1,12 +1,14 @@
 import { useSendSignInLinkToEmail } from 'react-firebase-hooks/auth'
 import { auth } from '@/firebase/app'
+import React, { useState } from 'react'
+//import { useSetAtom } from '';
 
 const SignInWithMagicLink: React.FC = () => {
   const [sendSignInLinkToEmail, sending, fbError] =
     useSendSignInLinkToEmail(auth)
   const [email, setEmail] = useState('')
   const [isSuccess, setIsSuccess] = useState(false)
-  const setAuthModalState = useSetAtom(authModalState)
+  //const setAuthModalState = useSetAtom(authModalState)
 
   const actionCodeSettings = {
     url: process.env.NEXT_PUBLIC_FIREBASE_MAGIC_LINK_CONTINUE_URL as string,
@@ -25,18 +27,18 @@ const SignInWithMagicLink: React.FC = () => {
   }
 
   return (
-    <Flex>
-      <Text>Sign In With Magic Link</Text>
-      
+    <div>
+      <text>Sign In With Magic Link</text>
+
       {isSuccess ? (
-        <Text>Check your email 💌</Text>
+        <text>Check your email 💌</text>
       ) : (
         <>
-          <Text>
+          <text>
             Enter your email and we will send you a link to sign in.
-          </Text>
+          </text>
           <form onSubmit={handleSubmit}>
-            <Input
+            <input
               required
               type="email"
               name="email"
@@ -44,15 +46,15 @@ const SignInWithMagicLink: React.FC = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            {fbError && <Text>{fbError.message}</Text>}
+            {fbError && <text>{fbError.message}</text>}
 
-            <Button type="submit" isLoading={sending}>
+            <button type="submit" >
               Send Link To Sign-In
-            </Button>
+            </button>
           </form>
         </>
       )}
-    </Flex>
+    </div>
   )
 }
 
